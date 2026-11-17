@@ -1,0 +1,26 @@
+# render.yaml — Shadow Music API (public, free web service)
+# Deploy: Render Dashboard → Blueprints → New Blueprint Instance →
+# connect github.com/XLEWIN/RobinChan → this file is picked up automatically.
+services:
+  - type: web
+    name: shadow-music-api
+    runtime: python
+    plan: free
+    rootDir: shadow_api
+    buildCommand: pip install -r requirements.txt
+    startCommand: python -u app.py
+    healthCheckPath: /v1/healthz
+    autoDeploy: true
+    envVars:
+      - key: SHADOW_API_SECRET
+        sync: false          # MUST equal the bot's SHADOW_API_SECRET (/root/RobinChan/.env on the phone) — paste the same value
+      - key: YUKI_API_URL
+        value: https://music.yukiapi.site
+      - key: YUKI_API_KEY
+        sync: false          # paste your yuki key (or leave empty to skip the yuki source)
+      - key: API_URL
+        value: https://api.nexgenbots.xyz
+      - key: API_KEY
+        sync: false          # paste your nexgen api key (or leave empty)
+      - key: PYTHON_VERSION
+        value: 3.12.11

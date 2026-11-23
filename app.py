@@ -207,7 +207,7 @@ async def innertube_search(session: aiohttp.ClientSession, query: str, limit: in
     }
     data = await _post_json(
         session,
-        f"https://www.youtubei.googleapis.com/youtubei/v1/search?key={_INNERTUBE_KEY}",
+        f"https://youtubei.googleapis.com/youtubei/v1/search?key={_INNERTUBE_KEY}",
         json_body=payload,
         headers={"User-Agent": "Mozilla/5.0"},
         timeout=6.0,
@@ -250,7 +250,7 @@ async def innertube_player(session: aiohttp.ClientSession, vidid: str) -> dict[s
     }
     data = await _post_json(
         session,
-        f"https://www.youtubei.googleapis.com/youtubei/v1/player?key={_INNERTUBE_ANDROID_KEY}",
+        f"https://youtubei.googleapis.com/youtubei/v1/player?key={_INNERTUBE_ANDROID_KEY}",
         json_body=payload,
         headers={"User-Agent": "com.google.android.youtube/19.09.37 (Linux; Android 11) gzip"},
         timeout=5.0,
